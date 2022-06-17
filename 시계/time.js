@@ -1,5 +1,14 @@
-const d_day = document.getElementById("1");
-function time() {
+const d_day = document.getElementById("watch");
+const time_div = document.createElement("div");
+const date_div = document.createElement("div");
+
+d_day.appendChild(time_div);
+d_day.appendChild(date_div);
+
+time_div.className = "time";
+date_div.className = "date";
+
+function time_function() {
   const D = new Date();
   const year = D.getFullYear();
   const Month = D.getMonth() + 1;
@@ -10,7 +19,10 @@ function time() {
   const min = String(D.getMinutes()).padStart(2, "0");
   const sec = String(D.getSeconds()).padStart(2, "0");
 
-  d_day.innerHTML = `${year}년 ${Month}월 ${date}일 ${day}요일<br>${Hour} : ${min} : ${sec}`;
+  console.log("d");
+
+  time_div.innerHTML = `${Hour} : ${min} : ${sec}`;
+  date_div.innerHTML = `${year}년 ${Month}월 ${date}일 ${day}`;
 }
-time();
-setInterval(time, 1000);
+time_function();
+setInterval(time_function, 1000);
